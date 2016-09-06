@@ -9,7 +9,7 @@ module Fluent
     def emit(tag, es, chain)
       tag = update_tag(tag)
       es.each { |time, record|
-        Engine.emit(tag, time, normalize_record(record))
+        router.emit(tag, time, normalize_record(record))
       }
 
       chain.next
